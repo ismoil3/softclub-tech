@@ -1,0 +1,157 @@
+{
+  "meta": {
+    "title": "Softclub Tech - Innovative Fintech Solutions and Programming",
+    "description": "Softclub Tech – a leader in digital technologies and fintech solutions."
+  },
+  "loading": "Loading...",
+  "hero": {
+    "badge": "Innovative Fintech Solutions",
+    "title": "Softclub Tech",
+    "description": "Creating advanced technological solutions for the financial sector and education",
+    "button": "Learn more"
+  },
+  "cards": {
+    "card1": {
+      "title": "Subsidiary Company",
+      "content": "A subsidiary of <span class='text-primary'>Softclub Capital Holdings Limited</span>, which is located in the United Kingdom. All our goals and ambitions are aimed at improving financial services."
+    },
+    "card2": {
+      "title": "250+",
+      "content": "In four years, Softclub Tech has grown from three dedicated employees to a leading fintech company with more than 250 talented specialists"
+    },
+    "card3": {
+      "title": "25+",
+      "content": "The average age of employees is only 25 years, including both students and experienced professionals"
+    },
+    "card4": {
+      "title": "10+",
+      "content": "More than 10 successfully implemented projects in the field of financial technologies"
+    },
+    "card5": {
+      "title": "5+",
+      "content": "Years of experience in developing fintech solutions"
+    },
+    "card6": {
+      "title": "24/7",
+      "content": "Customer support and ensuring uninterrupted service operation"
+    }
+  },
+  "about": {
+    "title": "Team of Professionals",
+    "subtitle": "We create innovative solutions for the digital future"
+  },
+  "products": {
+    "badge": "Our Solutions",
+    "title": "Products and Services",
+    "description": "Innovative solutions for the financial sector and education, developed by our team of professionals",
+    "items": {
+      "paymentApp": {
+        "title": "Payment Application",
+        "description": "Financial and payment management"
+      },
+      "onlineAcademy": {
+        "title": "Online IT Academy",
+        "description": "Training in modern IT technologies"
+      },
+      "preparation": {
+        "title": "Preparation",
+        "description": "Educational program for 4th and 5th clusters"
+      },
+      "onlineMenu": {
+        "title": "Online Menu",
+        "description": "Digital solution for restaurants"
+      },
+      "itAcademy": {
+        "title": "IT Academy",
+        "description": "In-person programming training"
+      }
+    }
+  },
+  "team": {
+    "badge": "Our Team",
+    "title": "Professionals in Their Field",
+    "description": "Talented specialists working on creating innovative fintech solutions and educational platforms",
+    "members": {
+      "member1": {
+        "name": "Alexander Ivanov",
+        "position": "CEO"
+      },
+      "member2": {
+        "name": "Elena Petrova",
+        "position": "CTO"
+      },
+      "member3": {
+        "name": "Rustam Aliev",
+        "position": "Development Lead"
+      },
+      "member4": {
+        "name": "Maria Karimova",
+        "position": "Sales Director"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Do you have questions or suggestions? We are always ready for cooperation and open to new ideas.",
+    "address": {
+      "title": "Our Address",
+      "line1": "Dushanbe, Bukhoro St., 16",
+      "line2": "Tajikistan"
+    },
+    "phone": {
+      "title": "Phone",
+      "number": "+992 (555) 123-456",
+      "hours": "Mon-Fri: 9:00 AM - 6:00 PM"
+    },
+    "email": {
+      "title": "Email",
+      "address1": "info@softclub.tech",
+      "address2": "support@softclub.tech"
+    },
+    "form": {
+      "title": "Write to Us",
+      "description": "Fill out the form, and we will contact you as soon as possible. We will be happy to answer your questions and discuss cooperation opportunities.",
+      "name": "Your name",
+      "email": "Your email",
+      "subject": "Subject",
+      "message": "Your message",
+      "submit": "Send message"
+    },
+    "careers": {
+      "title": "Join Us",
+      "description": "We are always looking for talented specialists. If you want to become part of our team, send us your resume.",
+      "button": "Open positions"
+    }
+  },
+  "footer": {
+    "description": "Creating advanced fintech solutions since 2019",
+    "address": "Tajikistan, Dushanbe, Ayni St. 48",
+    "email": "info@softclub.tj",
+    "phone": "+992 (48) 701-22-22",
+    "company": {
+      "title": "Company",
+      "about": "About us",
+      "careers": "Careers",
+      "partners": "Partners",
+      "contact": "Contact Us"
+    },
+    "products": {
+      "title": "Products",
+      "paymentApp": "Payment Application",
+      "itAcademy": "IT Academy",
+      "onlineMenu": "Online Menu",
+      "allProducts": "All Products"
+    },
+    "social": {
+      "title": "Social Media",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    },
+    "copyright": "© 2025 Softclub Tech. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "legal": "Legal Information"
+  }
+}

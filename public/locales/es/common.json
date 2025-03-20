@@ -1,0 +1,6 @@
+{
+  "welcome": "Bienvenido a Next.js con i18next",
+  "description": "Esta es una aplicación de ejemplo que muestra cómo usar i18next con Next.js, TypeScript y shadcn/ui.",
+  "changeLanguage": "Cambiar idioma"
+}
+
