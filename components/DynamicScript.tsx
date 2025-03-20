@@ -1,4 +1,4 @@
-// components/DynamicScript.tsx
+"use client";
 import { useEffect } from "react";
 
 const DynamicScript = () => {
