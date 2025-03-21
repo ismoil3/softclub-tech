@@ -12,10 +12,21 @@ import { useTranslation } from "react-i18next";
 const teamMembers = [
   {
     id: 1,
-    name: "Nurulloh Sulaymonov",
-    role: "Backend Developer",
-    description:
-      "Зиёда аз 8 сол таҷрибаи корӣ ба ҳайси омӯзгори C# дар SoftClub\nШуруъ аз моҳи январи соли 2024 дар\nширкати RIO ба ҳайси Бэкенд\nбарномасоз то ниҳояти корӣ фаъолият\nдорад",
+    name: {
+      en: "Nurulloh Sulaymonov",
+      ru: "Нурулло Сулейманов",
+      tg: "Нуруллоҳ Сулейманов",
+    },
+    role: {
+      en: "Backend Developer",
+      ru: "Бэкенд разработчик",
+      tg: "Бэкенд барномасоз",
+    },
+    description: {
+      en: "Over 8 years of experience as a C# instructor at SoftClub. Since January 2024, working as a Backend Developer at RIO.",
+      ru: "Более 8 лет опыта работы в качестве преподавателя C# в SoftClub. С января 2024 года работает бэкенд-разработчиком в компании RIO.",
+      tg: "Зиёда аз 8 сол таҷрибаи корӣ ба ҳайси омӯзгори C# дар SoftClub. Шуруъ аз моҳи январи соли 2024 дар ширкати RIO ба ҳайси Бэкенд барномасоз фаъолият дорад.",
+    },
     image: "/nrullo.png",
     logo: "/placeholder.svg?height=40&width=120",
     skills: ["C#", ".NET", "SQL", "Azure"],
@@ -27,10 +38,17 @@ const teamMembers = [
   },
   {
     id: 2,
-    name: "Zohir Kabirov",
-    role: "Backend Developer",
-    description:
-      "Зиёда аз 6 сол таҷрибаи корӣ ба ҳайси омузгори C# дар SoftClub Шуруъ аз моҳи январи соли 2024 дар ширкати RIO ба ҳайси Бэкенд барномасоз то инҷониб кору фаъолият доранд",
+    name: { en: "Zohir Kabirov", ru: "Зохир Кабиров", tg: "Зоҳир Кабиров" },
+    role: {
+      en: "Backend Developer",
+      ru: "Бэкенд разработчик",
+      tg: "Бэкенд барномасоз",
+    },
+    description: {
+      en: "Over 6 years of experience as a C# instructor at SoftClub. Since January 2024, working as a Backend Developer at RIO.",
+      ru: "Более 6 лет опыта работы в качестве преподавателя C# в SoftClub. С января 2024 года работает бэкенд-разработчиком в компании RIO.",
+      tg: "Зиёда аз 6 сол таҷрибаи корӣ ба ҳайси омӯзгори C# дар SoftClub. Шуруъ аз моҳи январи соли 2024 дар ширкати RIO ба ҳайси Бэкенд барномасоз фаъолият дорад.",
+    },
     image: "/zohir.png",
     logo: "/placeholder.svg?height=40&width=120",
     skills: ["C#", ".NET", "SQL", "Azure"],
@@ -42,10 +60,21 @@ const teamMembers = [
   },
   {
     id: 3,
-    name: "Rasul Safarovich",
-    role: "Full Stack Developer",
-    description:
-      "5+ years experience as a Full Stack Developer\nJoined TechCorp in March 2022\nExpert in React, Node.js and cloud infrastructure\nLeads the mobile application development team",
+    name: {
+      en: "Rasul Safarovich",
+      ru: "Расул Сафарович",
+      tg: "Расул Сафарович",
+    },
+    role: {
+      en: "Full Stack Developer",
+      ru: "Фулл-стек разработчик",
+      tg: "Фулл-стек барномасоз",
+    },
+    description: {
+      en: "5+ years experience as a Full Stack Developer. Joined TechCorp in March 2022. Expert in React, Node.js, and cloud infrastructure. Leads the mobile application development team.",
+      ru: "Более 5 лет опыта работы в качестве фулл-стек разработчика. Присоединился к TechCorp в марте 2022 года. Эксперт в React, Node.js и облачной инфраструктуре. Руководит командой по разработке мобильных приложений.",
+      tg: "Зиёда аз 5 сол таҷрибаи корӣ ба ҳайси фулл-стек барномасоз. Дар моҳи марти соли 2022 ба TechCorp пайваст. Мутахассис дар React, Node.js ва инфрасохтори абрӣ. Сардори гурӯҳи рушди барномаҳои мобилӣ мебошад.",
+    },
     image: "/rasul.png",
     logo: "/placeholder.svg?height=40&width=120",
     skills: ["React", "Node.js", "AWS", "TypeScript"],
@@ -56,13 +85,12 @@ const teamMembers = [
     },
   },
 ];
-
 const TeamSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [autoplay, setAutoplay] = useState(true);
   const [mounted, setMounted] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   // After mounting, we can safely show the UI
   useEffect(() => {
@@ -228,6 +256,8 @@ const TeamSlider = () => {
 };
 
 const TeamMemberCard = ({ member, isActive }) => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
   return (
     <Card
       className={`overflow-hidden rounded-xl md:rounded-3xl shadow-xl bg-white dark:bg-slate-800 border-gray-100 dark:border-slate-700 transition-all duration-300 ${
@@ -241,7 +271,7 @@ const TeamMemberCard = ({ member, isActive }) => {
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-sky-500/20 dark:from-blue-800/30 dark:to-indigo-900/30 mix-blend-multiply z-10"></div>
             <img
               src={member.image || "/placeholder.svg"}
-              alt={`Photo of ${member.name}`}
+              alt={`Photo of ${member.name[lang]}`}
               className="w-full h-full object-cover object-center"
             />
           </div>
@@ -250,15 +280,15 @@ const TeamMemberCard = ({ member, isActive }) => {
           <div className="p-4 md:p-6 lg:p-8 flex flex-col justify-between md:w-[400px]">
             <div>
               <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-1 text-indigo-700 dark:text-white">
-                {member.name}
+                {member.name[lang]}
               </h2>
 
               <p className="text-xs md:text-sm font-medium uppercase tracking-wider mb-2 md:mb-4 text-indigo-500 dark:text-blue-300">
-                {member.role}
+                {member.role[lang]}
               </p>
 
               <div className="text-xs md:text-sm mb-4 md:mb-6 whitespace-pre-line text-gray-700 dark:text-gray-300">
-                {member.description}
+                {member.description[lang]}
               </div>
 
               {/* Skills */}

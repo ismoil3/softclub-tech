@@ -72,6 +72,7 @@ export default function DynamicSection() {
 
   useEffect(() => {
     setMounted(true);
+    setTheme("dark");
   }, []);
 
   useEffect(() => {
@@ -115,9 +116,9 @@ export default function DynamicSection() {
         const shouldBeFullWidth =
           rect.top < viewportHeight * 0.2 && rect.bottom > 0;
 
-        if (shouldBeFullWidth !== scrollData.isFullWidth) {
-          shouldBeFullWidth ? setTheme("dark") : setTheme("light");
-        }
+        // if (shouldBeFullWidth !== scrollData.isFullWidth) {
+        //   shouldBeFullWidth ? setTheme("dark") : setTheme("light");
+        // }
 
         setScrollData((prev) => ({
           ...prev,
@@ -262,20 +263,40 @@ export default function DynamicSection() {
     <div className="transition-colors  duration-500">
       {/* Hero Section with 3D layered design */}
       <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-zinc-900 dark:via-black dark:to-zinc-800">
-        {/* Background elements */}
+        {/* Enhanced Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Modern gradient orbs */}
+          {/* Radial gradient backdrop */}
+          <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-emerald-500/5 dark:to-emerald-400/10"></div>
+
+          {/* Abstract geometric shapes */}
           <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-gradient-to-br from-emerald-400/20 to-teal-500/10 blur-3xl dark:from-emerald-400/10 dark:to-teal-500/5"></div>
           <div className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-gradient-to-tr from-blue-400/10 to-indigo-500/10 blur-3xl dark:from-blue-400/5 dark:to-indigo-500/5"></div>
 
-          {/* Subtle grid pattern */}
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
+          {/* Animated particles */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 rounded-full bg-emerald-400/30 dark:bg-emerald-400/20"
+                style={{
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  animation: `float ${
+                    3 + Math.random() * 7
+                  }s ease-in-out infinite ${Math.random() * 5}s`,
+                }}
+              ></div>
+            ))}
+          </div>
+
+          {/* Honeycomb pattern overlay */}
+          <div className="absolute inset-0 bg-[url('/honeycomb.svg')] bg-center opacity-5 dark:opacity-10"></div>
 
           {/* Gradient fade at bottom */}
           <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-gray-50 to-transparent dark:from-zinc-900 dark:to-transparent"></div>
         </div>
 
-        {/* Hero content */}
+        {/* Hero content with 3D effect */}
         <div className="relative z-10 container mx-auto px-4 pt-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -283,28 +304,42 @@ export default function DynamicSection() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center mb-16"
           >
+            {/* Animated badge with glow effect */}
             <div className="mb-6 inline-block">
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="px-4 py-1.5 bg-white/30 dark:bg-white/10 backdrop-blur-sm text-gray-800 dark:text-gray-200 text-sm font-medium rounded-full border border-gray-200/50 dark:border-white/10"
+                className="relative px-4 py-1.5 bg-white/30 dark:bg-white/10 backdrop-blur-sm text-gray-800 dark:text-gray-200 text-sm font-medium rounded-full border border-gray-200/50 dark:border-white/10 shadow-sm"
               >
-                {t("hero.badge")}
+                <span className="relative z-10">{t("hero.badge")}</span>
+                <span className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-400/20 animate-pulse"></span>
               </motion.span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 tracking-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-500 dark:from-emerald-400 dark:to-teal-300">
-                {t("hero.title")}
-              </span>
-            </h1>
+            {/* 3D text effect with perspective */}
+            <div className="perspective-1000 mb-6">
+              <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tight transform-style-3d">
+                <span className="block transform transition-transform hover:rotate-y-10 duration-500">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 dark:from-emerald-400 dark:via-teal-300 dark:to-emerald-300">
+                    {t("hero.title")}
+                  </span>
+                </span>
+              </h1>
+            </div>
 
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+            {/* Description with staggered animation */}
+            <motion.p
+              className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
               {t("hero.description")}
-            </p>
+            </motion.p>
           </motion.div>
 
+          {/* Interactive button with enhanced effects */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -317,22 +352,32 @@ export default function DynamicSection() {
                   .getElementById("dynamicSection")
                   .scrollIntoView({ behavior: "smooth" })
               }
-              className="group flex items-center gap-2 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-medium transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-emerald-600/20 hover:shadow-xl hover:shadow-emerald-600/30"
+              className="group relative flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white rounded-full font-medium transition-all duration-300 hover:-translate-y-1 overflow-hidden"
             >
-              <span>{t("hero.button")}</span>
-              <ChevronDown size={18} className="group-hover:animate-bounce" />
+              {/* Button background animation */}
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 bg-size-200 bg-pos-0 group-hover:bg-pos-100 transition-all duration-500"></span>
+
+              {/* Button content */}
+              <span className="relative z-10 flex items-center gap-2">
+                <span>{t("hero.button")}</span>
+                <ChevronDown size={18} className="group-hover:animate-bounce" />
+              </span>
+
+              {/* Button glow effect */}
+              <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 shadow-[0_0_15px_5px_rgba(16,185,129,0.5)] transition-opacity duration-500"></span>
             </button>
           </motion.div>
 
-          {/* 3D floating cards preview */}
+          {/* 3D floating cards with enhanced animation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="relative max-w-4xl mx-auto h-64 md:h-80"
+            className="relative max-w-4xl mx-auto h-64 md:h-96"
           >
+            {/* Card 1 with reflection effect */}
             <motion.div
-              className="absolute top-0 left-1/4 w-36 h-20 sm:w-48 sm:h-24 md:w-64 md:h-32 bg-white dark:bg-zinc-800 rounded-xl shadow-xl"
+              className="absolute top-0 left-1/4 w-36 h-20 sm:w-48 sm:h-24 md:w-64 md:h-32 rounded-xl shadow-xl overflow-hidden"
               animate={{
                 y: [0, -10, 0],
                 rotate: [-2, 0, -2],
@@ -344,9 +389,12 @@ export default function DynamicSection() {
                 ease: "easeInOut",
               }}
             >
-              <div className="h-full w-full p-4 flex flex-col justify-between">
+              <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50 dark:from-zinc-800 dark:to-zinc-900"></div>
+              <div className="absolute inset-0 bg-[url('/card-pattern.svg')] bg-no-repeat bg-cover opacity-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-600/5"></div>
+              <div className="relative h-full w-full p-4 flex flex-col justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-xs">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-xs shadow-md">
                     SC
                   </div>
                   <div className="text-xs font-medium">
@@ -357,10 +405,12 @@ export default function DynamicSection() {
                   {t("products.items.paymentApp.title")}
                 </div>
               </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent dark:from-white/5"></div>
             </motion.div>
 
+            {/* Card 2 with reflection effect */}
             <motion.div
-              className="absolute top-10 right-1/4 w-36 h-20 sm:w-48 sm:h-24 md:w-64 md:h-32 bg-white dark:bg-zinc-800 rounded-xl shadow-xl"
+              className="absolute top-10 right-1/4 w-36 h-20 sm:w-48 sm:h-24 md:w-64 md:h-32 rounded-xl shadow-xl overflow-hidden"
               animate={{
                 y: [0, 10, 0],
                 rotate: [2, 0, 2],
@@ -373,9 +423,12 @@ export default function DynamicSection() {
                 delay: 0.5,
               }}
             >
-              <div className="h-full w-full p-4 flex flex-col justify-between">
+              <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50 dark:from-zinc-800 dark:to-zinc-900"></div>
+              <div className="absolute inset-0 bg-[url('/card-pattern.svg')] bg-no-repeat bg-cover opacity-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-600/5"></div>
+              <div className="relative h-full w-full p-4 flex flex-col justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-xs">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-xs shadow-md">
                     SC
                   </div>
                   <div className="text-xs font-medium">
@@ -386,10 +439,12 @@ export default function DynamicSection() {
                   {t("products.items.itAcademy.title")}
                 </div>
               </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent dark:from-white/5"></div>
             </motion.div>
 
+            {/* Card 3 with reflection effect */}
             <motion.div
-              className="absolute bottom-0 left-1/3 w-36 h-20 sm:w-48 sm:h-24 md:w-64 md:h-32 bg-white dark:bg-zinc-800 rounded-xl shadow-xl"
+              className="absolute bottom-0 left-1/3 w-36 h-20 sm:w-48 sm:h-24 md:w-64 md:h-32 rounded-xl shadow-xl overflow-hidden"
               animate={{
                 y: [0, -15, 0],
                 rotate: [-1, 1, -1],
@@ -402,9 +457,12 @@ export default function DynamicSection() {
                 delay: 1,
               }}
             >
-              <div className="h-full w-full p-4 flex flex-col justify-between">
+              <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50 dark:from-zinc-800 dark:to-zinc-900"></div>
+              <div className="absolute inset-0 bg-[url('/card-pattern.svg')] bg-no-repeat bg-cover opacity-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-orange-600/5"></div>
+              <div className="relative h-full w-full p-4 flex flex-col justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-xs">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-xs shadow-md">
                     SC
                   </div>
                   <div className="text-xs font-medium">
@@ -415,11 +473,134 @@ export default function DynamicSection() {
                   {t("products.items.onlineMenu.title")}
                 </div>
               </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent dark:from-white/5"></div>
             </motion.div>
-          </motion.div>
-        </div>
-      </div>
 
+            {/* New fourth card with ring animation */}
+            <motion.div
+              className="absolute bottom-16 right-1/3 w-36 h-20 sm:w-48 sm:h-24 md:w-64 md:h-32 rounded-xl shadow-xl overflow-hidden"
+              animate={{
+                y: [0, 8, 0],
+                rotate: [1, -1, 1],
+                scale: [1, 1.02, 1],
+              }}
+              transition={{
+                repeat: Number.POSITIVE_INFINITY,
+                duration: 5.5,
+                ease: "easeInOut",
+                delay: 0.7,
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50 dark:from-zinc-800 dark:to-zinc-900"></div>
+              <div className="absolute inset-0 bg-[url('/card-pattern.svg')] bg-no-repeat bg-cover opacity-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/5"></div>
+              <div className="relative h-full w-full p-4 flex flex-col justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white text-xs shadow-md">
+                    SC
+                  </div>
+                  <div className="text-xs font-medium">
+                    {t("products.badge")}
+                  </div>
+                </div>
+                <div className="text-sm font-medium">{t("products.title")}</div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent dark:from-white/5"></div>
+            </motion.div>
+
+            {/* Circle decoration */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-48 md:h-48 rounded-full border border-emerald-500/20 dark:border-emerald-400/20 animate-pulse-slow"></div>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 rounded-full border border-teal-500/10 dark:border-teal-400/10 animate-pulse-slow delay-1000"></div>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full border border-blue-500/5 dark:border-blue-400/5 animate-pulse-slow delay-2000"></div>
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
+            <span className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+              Scroll to explore
+            </span>
+            <div className="w-6 h-10 border-2 border-gray-600 dark:border-gray-400 rounded-full flex justify-center">
+              <div className="w-1.5 h-3 bg-gray-600 dark:bg-gray-400 rounded-full mt-2 animate-bounce-slow"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Add these animations to your global CSS */}
+        <style jsx global>{`
+          @keyframes float {
+            0%,
+            100% {
+              transform: translateY(0) rotate(0);
+            }
+            50% {
+              transform: translateY(-20px) rotate(10deg);
+            }
+          }
+
+          @keyframes pulse-slow {
+            0%,
+            100% {
+              opacity: 0.3;
+              transform: scale(1);
+            }
+            50% {
+              opacity: 0.8;
+              transform: scale(1.05);
+            }
+          }
+
+          @keyframes bounce-slow {
+            0%,
+            100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(4px);
+            }
+          }
+
+          .bg-radial-gradient {
+            background: radial-gradient(
+              circle at center,
+              var(--tw-gradient-from) 0%,
+              var(--tw-gradient-via) 50%,
+              var(--tw-gradient-to) 100%
+            );
+          }
+
+          .perspective-1000 {
+            perspective: 1000px;
+          }
+
+          .transform-style-3d {
+            transform-style: preserve-3d;
+          }
+
+          .rotate-y-10:hover {
+            transform: rotateY(10deg);
+          }
+
+          .bg-size-200 {
+            background-size: 200% 100%;
+          }
+
+          .bg-pos-0 {
+            background-position: 0% 0%;
+          }
+
+          .bg-pos-100 {
+            background-position: 100% 0%;
+          }
+
+          .delay-1000 {
+            animation-delay: 1s;
+          }
+
+          .delay-2000 {
+            animation-delay: 2s;
+          }
+        `}</style>
+      </div>
       {/* Main section with dynamic width change */}
       <div className="container mx-auto px-4">
         <div

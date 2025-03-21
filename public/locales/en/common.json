@@ -28,7 +28,7 @@
       "content": "More than 10 successfully implemented projects in the field of financial technologies"
     },
     "card5": {
-      "title": "5+",
+      "title": "4+",
       "content": "Years of experience in developing fintech solutions"
     },
     "card6": {
@@ -153,5 +153,8 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "legal": "Legal Information"
+  },
+  "values": {
+    "title": "Our values"
   }
 }

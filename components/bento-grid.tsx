@@ -5,6 +5,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 interface BentoGridProps extends ComponentPropsWithoutRef<"div"> {
   children: ReactNode;
@@ -45,6 +46,8 @@ export function BentoCard({
   cta,
   ...props
 }: BentoCardProps) {
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
   return (
     <Card
       className={cn(
@@ -67,8 +70,8 @@ export function BentoCard({
           "flex flex-col justify-end absolute bottom-0 left-0 w-full p-6 transition-all duration-300 group-hover:hidden"
         )}
       >
-        <h3 className="text-xl font-semibold">{name}</h3>
-        <p className="max-w-lg text-muted-foreground">{description}</p>
+        <h3 className="text-xl font-semibold">{name[lang]}</h3>
+        {/* <p className="max-w-lg text-muted-foreground">{description[lang]}</p> */}
       </div>
 
       {/* CTA Button */}
@@ -77,8 +80,8 @@ export function BentoCard({
           "absolute inset-0 flex flex-col justify-start items-start p-[20px] bg-[#006AEA] translate-y-10 transform-gpu opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
         )}
       >
-        <h3 className="text-xl text-white font-semibold mb-2">{name}</h3>
-        <p className="text-white text-sm">{cta}</p>
+        <h3 className="text-xl text-white font-semibold mb-2">{name[lang]}</h3>
+        <p className="text-white text-sm">{description[lang]}</p>
       </div>
 
       {/* Overlay effect */}
